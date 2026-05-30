@@ -1,21 +1,21 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: chronos-postgres
+    container_name: kestro-postgres
     environment:
-      POSTGRES_DB: chronos
-      POSTGRES_USER: chronos
-      POSTGRES_PASSWORD: chronos
+      POSTGRES_DB: kestro
+      POSTGRES_USER: kestro
+      POSTGRES_PASSWORD: kestro
     ports:
       - "5432:5432"
     volumes:
-      - chronos-postgres:/var/lib/postgresql/data
+      - kestro-postgres:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U chronos -d chronos"]
+      test: ["CMD-SHELL", "pg_isready -U kestro -d kestro"]
       interval: 5s
       timeout: 5s
       retries: 10
 
 volumes:
-  chronos-postgres:
+  kestro-postgres:
 

@@ -135,12 +135,12 @@ async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt()
         .with_env_filter(
             tracing_subscriber::EnvFilter::try_from_default_env()
-                .unwrap_or_else(|_| "chronos_api=info,tower_http=info".into()),
+                .unwrap_or_else(|_| "kestro_api=info,tower_http=info".into()),
         )
         .init();
 
     let database_url = env::var("DATABASE_URL")
-        .unwrap_or_else(|_| "postgres://chronos:chronos@localhost:5432/chronos".to_string());
+        .unwrap_or_else(|_| "postgres://kestro:kestro@localhost:5432/kestro".to_string());
     let bind_addr = env::var("BIND_ADDR").unwrap_or_else(|_| "127.0.0.1:8080".to_string());
     let tick_seconds = env::var("SCHEDULER_TICK_SECONDS")
         .ok()
@@ -157,7 +157,7 @@ async fn main() -> anyhow::Result<()> {
     let state = AppState {
         pool,
         http: Client::builder()
-            .user_agent("chronos-scheduler/0.1")
+            .user_agent("kestro-scheduler/0.1")
             .build()?,
     };
 
@@ -185,7 +185,7 @@ async fn main() -> anyhow::Result<()> {
 
     let addr: SocketAddr = bind_addr.parse()?;
     let listener = tokio::net::TcpListener::bind(addr).await?;
-    info!("Chronos API listening on {addr}");
+    info!("Kestro API listening on {addr}");
     axum::serve(listener, app).await?;
 
     Ok(())

@@ -17,7 +17,7 @@ const config: Config = {
         "muted-foreground": "hsl(var(--muted-foreground))",
         surface: "#1A1F2B",
         ink: "#111827",
-        chronos: {
+        kestro: {
           cyan: "#06B6D4",
           mint: "#10B981",
           amber: "#F59E0B",

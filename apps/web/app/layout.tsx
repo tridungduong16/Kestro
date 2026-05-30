@@ -3,8 +3,8 @@ import "./globals.css";
 import { QueryProvider } from "@/components/query-provider";
 
 export const metadata: Metadata = {
-  title: "Chronos Scheduler",
-  description: "Self-hosted HTTP scheduler platform",
+  title: "Kestro Scheduler",
+  description: "Self-hosted job scheduling platform",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png"

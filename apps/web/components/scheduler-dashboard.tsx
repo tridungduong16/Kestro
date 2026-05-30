@@ -284,20 +284,19 @@ export function SchedulerDashboard() {
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(6,182,212,0.11),transparent_30%),#F8FAFC]">
+    <main className="min-h-screen bg-slate-50">
       <aside className="fixed inset-y-0 left-0 z-20 hidden w-72 flex-col border-r border-white/10 bg-surface text-white lg:flex">
         <div className="flex h-20 items-center gap-3 px-6">
           <Image
             alt=""
-            className="h-10 w-10 rounded-xl object-cover"
+            className="h-10 w-10 rounded-lg object-cover"
             height={40}
             priority
             src="/logo.png"
             width={40}
           />
           <div>
-            <p className="text-lg font-semibold">Chronos</p>
-            <p className="font-mono text-xs text-slate-400">HTTP scheduler</p>
+            <p className="text-lg font-semibold">Kestro</p>
           </div>
         </div>
         <nav className="space-y-1 px-3">
@@ -309,10 +308,10 @@ export function SchedulerDashboard() {
           ].map((item) => (
             <button
               className={cn(
-                "flex h-11 w-full items-center gap-3 rounded-lg px-3 text-sm transition-colors",
+                "flex h-10 w-full items-center gap-3 rounded-lg px-3 text-sm transition-colors",
                 item.active
-                  ? "bg-white text-slate-950"
-                  : "text-slate-300 hover:bg-white/10 hover:text-white"
+                  ? "bg-white/10 text-white"
+                  : "text-slate-400 hover:bg-white/[0.06] hover:text-white"
               )}
               key={item.label}
               type="button"
@@ -323,45 +322,49 @@ export function SchedulerDashboard() {
           ))}
         </nav>
         <div className="mt-auto p-4">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.08] p-4">
-            <div className="flex items-center justify-between">
-              <Badge variant="dark">Worker online</Badge>
-              <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+          <div className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <p className="text-sm font-medium text-white">Runtime</p>
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
             </div>
-            <div className="mt-5 grid grid-cols-7 items-end gap-1.5">
-              {[42, 58, 64, 46, 72, 61, 80].map((height, index) => (
-                <span
-                  className="rounded-sm bg-chronos-cyan/80"
-                  key={`${height}-${index}`}
-                  style={{ height }}
-                />
-              ))}
+            <div className="mt-3 space-y-2 text-xs">
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-slate-400">Worker</span>
+                <span className="font-mono text-slate-200">online</span>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-slate-400">Queue latency</span>
+                <span className="font-mono text-slate-200">21ms</span>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-slate-400">Tick interval</span>
+                <span className="font-mono text-slate-200">30s</span>
+              </div>
             </div>
-            <p className="mt-4 font-mono text-xs text-slate-400">Queue latency 21ms</p>
           </div>
         </div>
       </aside>
 
       <section className="lg:pl-72">
-        <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur">
+        <header className="sticky top-0 z-10 border-b border-slate-200 bg-white">
           <div className="flex min-h-20 flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
             <div>
               <div className="flex items-center gap-2 lg:hidden">
                 <Image
                   alt=""
-                  className="h-9 w-9 rounded-xl object-cover"
+                  className="h-9 w-9 rounded-lg object-cover"
                   height={36}
                   priority
                   src="/logo.png"
                   width={36}
                 />
-                <p className="text-lg font-semibold">Chronos</p>
+                <p className="text-lg font-semibold">Kestro</p>
               </div>
               <h1 className="mt-2 text-2xl font-semibold text-slate-950 lg:mt-0">
                 Schedule Management
               </h1>
               <p className="text-sm text-slate-500">
-                Recurring HTTP jobs, execution visibility, and manual run controls.
+                Jobs, execution history, and worker status.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -385,14 +388,14 @@ export function SchedulerDashboard() {
         <div className="space-y-6 px-4 py-6 sm:px-6 lg:px-8">
           <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <MetricCard
-              description="Active schedules"
+              description="Currently active"
               icon={Activity}
               label="Live jobs"
               tone="cyan"
               value={stats.active.toString()}
             />
             <MetricCard
-              description="Average over configured jobs"
+              description="Across configured jobs"
               icon={CheckCircle2}
               label="Success rate"
               tone="emerald"
@@ -420,7 +423,7 @@ export function SchedulerDashboard() {
                 <div>
                   <CardTitle>Schedules</CardTitle>
                   <CardDescription>
-                    {filteredSchedules.length} jobs configured for HTTP execution
+                    {filteredSchedules.length} jobs configured
                   </CardDescription>
                 </div>
                 <Button
@@ -458,8 +461,8 @@ export function SchedulerDashboard() {
                       {filteredSchedules.map((schedule) => (
                         <tr
                           className={cn(
-                            "cursor-pointer transition-colors hover:bg-cyan-50/50 focus:bg-cyan-50/60 focus:outline-none",
-                            selectedSchedule?.id === schedule.id && "bg-cyan-50/80"
+                            "cursor-pointer transition-colors hover:bg-slate-50 focus:bg-slate-50 focus:outline-none",
+                            selectedSchedule?.id === schedule.id && "bg-cyan-50/70"
                           )}
                           key={schedule.id}
                           onClick={() => setSelectedId(schedule.id)}
@@ -473,7 +476,7 @@ export function SchedulerDashboard() {
                         >
                           <td className="whitespace-nowrap px-5 py-4">
                             <div className="flex items-center gap-3">
-                              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 text-slate-700">
+                              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
                                 <CalendarClock className="h-4 w-4" />
                               </span>
                               <div>
@@ -592,7 +595,7 @@ export function SchedulerDashboard() {
                     </TabsContent>
                   </Tabs>
                 ) : (
-                  <div className="flex min-h-72 items-center justify-center rounded-2xl border border-dashed border-slate-200 text-sm text-slate-500">
+                  <div className="flex min-h-72 items-center justify-center rounded-lg border border-dashed border-slate-200 text-sm text-slate-500">
                     No schedules yet
                   </div>
                 )}
@@ -607,7 +610,7 @@ export function SchedulerDashboard() {
           <DialogHeader>
             <DialogTitle>{editingSchedule ? "Edit schedule" : "Create schedule"}</DialogTitle>
             <DialogDescription>
-              Configure the HTTP target, cron expression, retry policy, and request body.
+              Configure the target, cron expression, retry policy, and request body.
             </DialogDescription>
           </DialogHeader>
           <form
@@ -748,13 +751,13 @@ function MetricCard({
 
   return (
     <Card>
-      <CardContent className="flex items-start justify-between gap-4 p-5">
+      <CardContent className="flex min-h-[116px] items-start justify-between gap-4 p-5">
         <div>
           <p className="text-sm font-medium text-slate-500">{label}</p>
-          <p className="mt-2 text-3xl font-semibold text-slate-950">{value}</p>
+          <p className="mt-2 text-[21px] font-semibold leading-7 text-slate-950">{value}</p>
           <p className="mt-1 line-clamp-1 text-sm text-slate-500">{description}</p>
         </div>
-        <span className={cn("flex h-11 w-11 shrink-0 items-center justify-center rounded-xl", toneClass)}>
+        <span className={cn("flex h-10 w-10 shrink-0 items-center justify-center rounded-lg", toneClass)}>
           <Icon className="h-5 w-5" />
         </span>
       </CardContent>
@@ -764,7 +767,7 @@ function MetricCard({
 
 function EndpointPreview({ schedule }: { schedule: Schedule }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-950 p-4 text-white">
+    <div className="rounded-lg border border-slate-800 bg-surface p-4 text-white">
       <div className="flex items-center justify-between gap-3">
         <Badge variant="dark">{schedule.method}</Badge>
         <p className="font-mono text-xs text-slate-400">{schedule.cronExpression}</p>
@@ -792,7 +795,7 @@ function MiniStat({ label, value }: { label: string; value: string }) {
 
 function DetailTile({ label, value }: { label: string; value: string }) {
   return (
-    <div className="min-h-20 rounded-xl border border-slate-200 bg-slate-50 p-3">
+    <div className="min-h-20 rounded-lg border border-slate-200 bg-slate-50 p-3">
       <p className="text-xs font-medium uppercase text-slate-500">{label}</p>
       <p className="mt-2 text-sm font-semibold text-slate-950">{value}</p>
     </div>
@@ -802,7 +805,7 @@ function DetailTile({ label, value }: { label: string; value: string }) {
 function ExecutionList({ executions }: { executions: Execution[] }) {
   if (!executions.length) {
     return (
-      <div className="flex min-h-60 items-center justify-center rounded-2xl border border-dashed border-slate-200 text-sm text-slate-500">
+      <div className="flex min-h-60 items-center justify-center rounded-lg border border-dashed border-slate-200 text-sm text-slate-500">
         No executions recorded
       </div>
     );
@@ -812,7 +815,7 @@ function ExecutionList({ executions }: { executions: Execution[] }) {
     <div className="space-y-3">
       {executions.map((execution) => (
         <div
-          className="flex gap-3 rounded-xl border border-slate-200 bg-white p-3"
+          className="flex gap-3 rounded-lg border border-slate-200 bg-white p-3"
           key={execution.id}
         >
           <span

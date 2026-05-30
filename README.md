@@ -1,6 +1,10 @@
-# Chronos
+<p align="center">
+  <img src="./apps/web/public/logo.png" alt="Kestro Logo" width="160" />
+</p>
 
-Chronos is a lightweight, self-hostable HTTP scheduler inspired by Google Cloud Scheduler. It provides a Next.js dashboard and a Rust API for creating recurring jobs that call HTTP endpoints, track execution history, and support manual runs.
+# Kestro
+
+Kestro is a lightweight, self-hostable HTTP scheduler inspired by Google Cloud Scheduler. It provides a Next.js dashboard and a Rust API for creating recurring jobs that call HTTP endpoints, track execution history, and support manual runs.
 
 ## Features
 
@@ -68,6 +72,12 @@ Run the web app in another terminal:
 npm run dev:web
 ```
 
+Or start it with automatic port selection:
+
+```bash
+npm run start:server
+```
+
 Default local URLs:
 
 - Web: `http://localhost:3000`
@@ -82,7 +92,7 @@ The API reads these values from the environment:
 
 | Variable | Default | Description |
 | --- | --- | --- |
-| `DATABASE_URL` | `postgres://chronos:chronos@localhost:5432/chronos` | PostgreSQL connection string. |
+| `DATABASE_URL` | `postgres://kestro:kestro@localhost:5432/kestro` | PostgreSQL connection string. |
 | `BIND_ADDR` | `127.0.0.1:8080` | API host and port. |
 | `SCHEDULER_TICK_SECONDS` | `30` | How often the worker checks for due schedules. |
 
@@ -90,6 +100,7 @@ The API reads these values from the environment:
 
 | Command | Description |
 | --- | --- |
+| `npm run start:server` | Start the web server on the first free port from `3000`. |
 | `npm run dev:web` | Start the Next.js development server. |
 | `npm run build:web` | Build the web app. |
 | `npm run lint:web` | Run ESLint for the web app. |

@@ -1,10 +1,10 @@
-# Chronos - Lightweight HTTP Scheduler
+# Kestro - Lightweight HTTP Scheduler
 
 ## Overview
 
-Chronos is a lightweight scheduler service inspired by Google Cloud Scheduler.
+Kestro is a lightweight scheduler service inspired by Google Cloud Scheduler.
 
-The platform allows users to create recurring schedules that trigger HTTP endpoints at predefined intervals. Chronos focuses on simplicity, reliability, and ease of deployment while providing execution history and monitoring capabilities.
+The platform allows users to create recurring schedules that trigger HTTP endpoints at predefined intervals. Kestro focuses on simplicity, reliability, and ease of deployment while providing execution history and monitoring capabilities.
 
 ## Frontend Stack
 

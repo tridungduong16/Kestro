@@ -1,16 +1,17 @@
 {
-  "name": "chronos",
+  "name": "kestro",
   "private": true,
   "version": "0.1.0",
   "workspaces": [
     "apps/web"
   ],
   "scripts": {
-    "dev:web": "npm --workspace @chronos/web run dev",
-    "build:web": "npm --workspace @chronos/web run build",
-    "lint:web": "npm --workspace @chronos/web run lint",
+    "start": "bash scripts/start-server.sh",
+    "start:server": "bash scripts/start-server.sh",
+    "dev:web": "npm --workspace @kestro/web run dev",
+    "build:web": "npm --workspace @kestro/web run build",
+    "lint:web": "npm --workspace @kestro/web run lint",
     "dev:api": "cargo run --manifest-path apps/api/Cargo.toml",
     "check:api": "cargo check --manifest-path apps/api/Cargo.toml"
   }
 }
-

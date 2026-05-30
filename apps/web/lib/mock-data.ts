@@ -28,7 +28,7 @@ export const schedules: Schedule[] = [
     successRate: 97.8,
     timeoutSeconds: 20,
     retryCount: 1,
-    headers: "{\n  \"X-Source\": \"chronos\"\n}",
+    headers: "{\n  \"X-Source\": \"kestro\"\n}",
     payload: ""
   },
   {
@@ -58,7 +58,7 @@ export const schedules: Schedule[] = [
     successRate: 88.4,
     timeoutSeconds: 60,
     retryCount: 4,
-    headers: "{\n  \"X-Client\": \"chronos\"\n}",
+    headers: "{\n  \"X-Client\": \"kestro\"\n}",
     payload: "{\n  \"full\": false\n}"
   }
 ];

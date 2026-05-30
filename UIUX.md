@@ -1,6 +1,6 @@
 # UI/UX Overview
 
-Chronos follows a simple and focused user experience inspired by Google Cloud Scheduler.
+Kestro follows a simple and focused user experience inspired by Google Cloud Scheduler.
 
 The interface is designed around a single core concept: scheduling recurring HTTP requests.
 
