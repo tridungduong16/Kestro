@@ -15,7 +15,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-950 transition-colors placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-kestro-cyan disabled:cursor-not-allowed disabled:opacity-50",
+      "flex h-9 w-full items-center justify-between rounded-md border border-linear-charcoal bg-linear-gunmetal px-3 py-2 text-sm text-linear-porcelain transition-colors placeholder:text-linear-storm focus:outline-none focus:ring-2 focus:ring-linear-lime disabled:cursor-not-allowed disabled:opacity-50",
       className
     )}
     {...props}
@@ -36,7 +36,7 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-50 min-w-[8rem] overflow-hidden rounded-lg border border-slate-200 bg-white text-slate-950 shadow-panel",
+        "relative z-50 min-w-[8rem] overflow-hidden rounded-md border border-linear-charcoal bg-linear-slate text-linear-porcelain shadow-linear-xl",
         position === "popper" &&
           "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
         className
@@ -65,7 +65,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-md py-2 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-slate-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex w-full cursor-default select-none items-center rounded-sm py-2 pl-8 pr-2 text-sm text-linear-steel outline-none transition-colors focus:bg-linear-charcoal focus:text-linear-porcelain data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className
     )}
     {...props}
@@ -81,4 +81,3 @@ const SelectItem = React.forwardRef<
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue };
-

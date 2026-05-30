@@ -15,22 +15,41 @@ const config: Config = {
         foreground: "hsl(var(--foreground))",
         muted: "hsl(var(--muted))",
         "muted-foreground": "hsl(var(--muted-foreground))",
-        surface: "#1A1F2B",
-        ink: "#111827",
+        surface: "#0f1011",
+        ink: "#f7f8f8",
+        linear: {
+          black: "#08090a",
+          graphite: "#0f1011",
+          slate: "#161718",
+          charcoal: "#23252a",
+          ash: "#323334",
+          gunmetal: "#383b3f",
+          porcelain: "#f7f8f8",
+          steel: "#d0d6e0",
+          storm: "#8a8f98",
+          fog: "#62666d",
+          lime: "#e4f222",
+          blue: "#5e6ad2",
+          cyan: "#02b8cc",
+          emerald: "#27a644",
+          red: "#eb5757"
+        },
         kestro: {
-          cyan: "#06B6D4",
-          mint: "#10B981",
-          amber: "#F59E0B",
-          red: "#EF4444",
-          violet: "#6366F1"
+          cyan: "#e4f222",
+          mint: "#27a644",
+          amber: "#e4f222",
+          red: "#eb5757",
+          violet: "#5e6ad2"
         }
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "SFMono-Regular", "Menlo", "monospace"]
+        mono: ["Berkeley Mono", "IBM Plex Mono", "JetBrains Mono", "SFMono-Regular", "Menlo", "monospace"]
       },
       boxShadow: {
-        panel: "0 18px 55px rgba(17, 24, 39, 0.08)"
+        panel: "0 2px 4px rgba(0, 0, 0, 0.4)",
+        "linear-inset": "rgb(35, 37, 42) 0px 0px 0px 1px inset",
+        "linear-xl": "rgba(8, 9, 10, 0.6) 0px 4px 32px 0px"
       }
     }
   },
@@ -38,4 +57,3 @@ const config: Config = {
 };
 
 export default config;
-

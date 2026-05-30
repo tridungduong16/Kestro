@@ -4,22 +4,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kestro-cyan focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-linear-lime focus-visible:ring-offset-2 focus-visible:ring-offset-linear-black disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-kestro-cyan text-white hover:bg-cyan-600",
-        secondary: "bg-slate-100 text-slate-900 hover:bg-slate-200",
-        outline: "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
-        ghost: "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
-        danger: "bg-red-600 text-white hover:bg-red-700",
-        dark: "bg-surface text-white hover:bg-slate-800"
+        default: "bg-linear-lime text-linear-black hover:bg-[#f0ff3a]",
+        secondary: "bg-linear-ash text-linear-porcelain hover:bg-linear-gunmetal",
+        outline: "border border-linear-charcoal bg-transparent text-linear-steel hover:bg-linear-slate hover:text-linear-porcelain",
+        ghost: "text-linear-storm hover:bg-linear-slate hover:text-linear-porcelain",
+        danger: "bg-linear-red text-linear-porcelain hover:bg-[#ff6666]",
+        dark: "bg-linear-slate text-linear-porcelain hover:bg-linear-charcoal"
       },
       size: {
-        default: "h-10 px-4 py-2",
+        default: "h-9 px-4 py-2",
         sm: "h-8 px-3 text-xs",
         lg: "h-11 px-5",
-        icon: "h-9 w-9"
+        icon: "h-8 w-8"
       }
     },
     defaultVariants: {
@@ -50,4 +50,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
-

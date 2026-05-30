@@ -1,4 +1,11 @@
-export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+export type HttpMethod =
+  | "GET"
+  | "POST"
+  | "PUT"
+  | "PATCH"
+  | "DELETE"
+  | "HEAD"
+  | "OPTIONS";
 
 export type ScheduleStatus = "active" | "paused";
 
@@ -29,4 +36,3 @@ export type Execution = {
   statusCode?: number;
   error?: string;
 };
-

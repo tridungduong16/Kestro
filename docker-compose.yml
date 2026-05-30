@@ -1,21 +1,21 @@
 services:
-  postgres:
-    image: postgres:16-alpine
-    container_name: kestro-postgres
+  mysql:
+    image: mysql:8.4
+    container_name: kestro-mysql
     environment:
-      POSTGRES_DB: kestro
-      POSTGRES_USER: kestro
-      POSTGRES_PASSWORD: kestro
+      MYSQL_DATABASE: kestro
+      MYSQL_USER: kestro
+      MYSQL_PASSWORD: kestro
+      MYSQL_ROOT_PASSWORD: kestro_root
     ports:
-      - "5432:5432"
+      - "3306:3306"
     volumes:
-      - kestro-postgres:/var/lib/postgresql/data
+      - kestro-mysql:/var/lib/mysql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U kestro -d kestro"]
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u kestro --password=$$MYSQL_PASSWORD"]
       interval: 5s
       timeout: 5s
       retries: 10
 
 volumes:
-  kestro-postgres:
-
+  kestro-mysql:
